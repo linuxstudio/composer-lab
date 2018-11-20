@@ -23,14 +23,14 @@ The voting business network created in the Step 1 is a good starting point for t
 
 Exercise: Think how to extend the voting business network by adding a new participant (e.g. the observer). 
 
-Note: the `voting` directory in the composer-lab contains the basic network that you get in Step 1. Clone this git repo to get copied to your environment.
+Note: the `voting` directory in the composer-lab contains the basic network that you built in [Step 1](#step-1:-model-the-voting-business-network). Execute the commands below to clone this repository to your own environment.
 ```
 cd <your preferred directory>
 git clone https://github.com/eciggaar/composer-lab.git
 ```
 
 ### First Deployment of the business network
-The business network that you've created in the playground needs to be deployed locally as well. For this, make sure that the local blockchain network is started and that the PeerAdmin business card is created. You can check the status of your blockchain network by executing
+The business network that you created in the playground needs to be deployed locally as well. For this, make sure that the local blockchain network is started and that the PeerAdmin business card is created. You can check the status of your blockchain network by executing,
 ```
 docker ps
 ```
@@ -42,7 +42,7 @@ CONTAINER ID        IMAGE                               COMMAND                 
 b4690fb308ac        hyperledger/fabric-couchdb:0.4.10   "tini -- /docker-ent…"   22 seconds ago      Up 21 seconds       4369/tcp, 9100/tcp, 0.0.0.0:5984->5984/tcp       couchdb
 898e13bdb97d        hyperledger/fabric-orderer:1.2.1    "orderer"                22 seconds ago      Up 21 seconds       0.0.0.0:7050->7050/tcp                           orderer.example.com
 ```
-The presence of the PeerAdmin card can be checked by executing 
+The presence of the PeerAdmin card can be checked by executing,
 ```
 composer card list
 ```
@@ -125,7 +125,7 @@ Once the new BNA file has been installed on the blockchain network, the upgrade 
 ```
 composer network upgrade -c PeerAdmin@hlfv1 -n voting -V <version_number>
 ```
-where `<version_number>` should match the version number listed in the output of the `composer network install` command. It also matches the version number in the `package.json` file.
+where `<version_number>` should match the version number listed in the output of the `composer network install` command and the version number in the `package.json` file.
 
 ### Additional requirements to the voting prototype
 The voting business network has further room for improvement :smile:. 
@@ -137,14 +137,14 @@ For example, whenever a vote has been successfully committed to the ledger, a no
 3. Voters should only be able to vote. Observers should only be able to see the voting scores. They should not be able to vote. To accomplish this, change the `permissions.acl` file to reflect these rules.
 
 Use the section [Update the business network](#update-the-business-network) to deploy the new features to the blockchain network. Don't forget to change the version number.
-> Note: the 'finish' folder in this project contains a solution for all extra requirements. Please only look if you don't know how to code it yourself anymore. 
+> Note: the 'finish' folder in this project contains a solution for all additional requirements. This might be useful if you're stuck and need inspiration on how to continue.
 
 ## Step 3: Generate the REST server
 Once you're satisfied with the voting business network, you can generate a REST server that creates RESTful endpoints to your business network. These endpoints can be consumed by the front-end application. To generate a REST server from a deployed business network, enter the following commmand:
 ```
 composer-rest-server -c admin@voting -n never -w true
 ```
-This will generate a basic REST server without using namespaces, but with event publication over WebSockets enabled. Use the command without options to trigger the wizard. The REST server will be listening at port 3000.
+This will generate a basic REST server without using namespaces, but with event publication over WebSockets enabled. If you want to use the wizard to guide you, use the command without options. The REST server will be listening at port 3000.
 
 ## Step 4: Build a front-end application (e.g. using Node-RED)
 Now that the REST server is up and running, the business service is ready to be consumed by a front-end application. The front-end application for the voting prototype is actually split in two. 
