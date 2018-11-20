@@ -23,7 +23,7 @@ The voting business network created in the Step 1 is a good starting point for t
 
 Exercise: Think how to extend the voting business network by adding a new participant (e.g. the observer). 
 
-Note: the `voting` directory in the composer-lab contains the basic network that you built in [Step 1](#step-1:-model-the-voting-business-network). Execute the commands below to clone this repository to your own environment.
+Note: the `voting` directory in the composer-lab contains the basic network that you built in [Step 1](#step-1-model-the-voting-business-network). Execute the commands below to clone this repository to your own environment.
 ```
 cd <your preferred directory>
 git clone https://github.com/eciggaar/composer-lab.git
