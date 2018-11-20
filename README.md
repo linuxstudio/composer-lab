@@ -165,6 +165,9 @@ Another option of course is to build your own front-end using whatever technolog
 4. Once the Node-RED environment is up-and-running, visit the app URL and complete the wizard. It basically asks you to secure your Node-RED editing environment with a userid and password. 
 5. You can now use the flows available in the URL below as inspiration to build your own dashboard.
 
+
+**Have fun and happy coding!!!** :smiley: :smiley:
+
 ## Resources
 * [Developer tutorial for creating a Hyperledger Composer solution](https://hyperledger.github.io/composer/latest/tutorials/developer-tutorial)
 * [IBM Blockchain for developers](https://developer.ibm.com/technologies/blockchain/)
@@ -172,5 +175,3 @@ Another option of course is to build your own front-end using whatever technolog
 * [Hyperledger Composer - Developering Business Networks](https://hyperledger.github.io/composer/latest/business-network/business-network-index)
 * [Hyperledger Composer - API reference](https://hyperledger.github.io/composer/latest/api/api-doc-index)
 
-
-**Have fun and happy coding!!!** :smiley: :smiley:
