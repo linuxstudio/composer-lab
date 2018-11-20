@@ -1,5 +1,4 @@
 # Create a voting application prototype using Hyperledger Composer
-
 To create a successful voting application, you need to ensure that the votes can never be changed or altered. A blockchain’s immutability provides this assurance. In this tutorial, you’ll use the Hyperledger Composer CLI together with the Hyperledger Composer Playground and some provided sample code to create, deploy locally, and experiment with a prototype for a secure and fair voting application.
 
 The Hyperledger Composer Playground is the user interface contained in the open source Hyperledger Composer. The Playground is ideal for configuring, deploying, and testing a business blockchain network. Advanced features help you manage the security of your blockchain network, invite participants to your network, and connect to multiple networks.
@@ -17,6 +16,8 @@ The Hyperledger Composer CLI is a set of commands that can be used to perform mu
 ## Step 1: Model the Voting Business Network 
 Please follow the steps in the original tutorial that forms the basis of this lab. This tutorial will help you create the logic and basic permissions for a voting application on a blockchain network. When you finished the tutorial, please return to this page and continue with the next step.
 
+Link to tutorial: https://developer.ibm.com/tutorials/cl-create-blockchain-voting-app-hyperledger-composer-playground/
+
 ## Step 2: Extend the Voting Business Network
 The voting business network created in the Step 1 is a good starting point for the voting app. However, it is far from perfect. For example, the current voter participant has all rights in the business network. It can see the final results as well, while this is not strictly necessary. On the other hand, there is no observer role present in the current model. This could be added.
 
@@ -25,7 +26,7 @@ Exercise: Think how to extend the voting business network by adding a new partic
 Note: the `voting` directory in the composer-lab contains the basic network that you get in Step 1. Clone this git repo to get copied to your environment.
 ```
 cd <your preferred directory>
-git clone 
+git clone https://github.com/eciggaar/composer-lab.git
 ```
 
 ### First Deployment of the business network
@@ -127,14 +128,16 @@ composer network upgrade -c PeerAdmin@hlfv1 -n voting -V <version_number>
 where `<version_number>` should match the version number listed in the output of the `composer network install` command. It also matches the version number in the `package.json` file.
 
 ### Additional requirements to the voting prototype
-The voting business network has further room for improvement :smile: For example, whenever a vote has been successfully committed to the ledger, a notification needs to sent so that a front-end application could update the live voting scores. Another one could be to give voters the option to register themselves. Below a list of requirements that can be implemented.
+The voting business network has further room for improvement :smile:. 
+
+For example, whenever a vote has been successfully committed to the ledger, a notification needs to sent so that a front-end application could update the live voting scores. Another one could be to give voters the option to register themselves. Below a list of requirements that can be implemented.
 
 1. Add events to the business network that allows a notification to be sent whenever a voter successfully placed a vote.
-2. A voter should be able to register himself. To keep things simple, start by implementing a new transaction that creates a new `voter` and that adds a new `ifVoted` entry to the ledger.
-3. Voters should only be able to vote. Observers should only be able to see the voting scores. They should not be able to vote. To accomplish this, the access control list needs to be modified...
+2. A voter should be able to register himself. To keep things simple, start by implementing a new transaction that creates a new `voter` and that adds a new `ifVoted` asset to the ledger.
+3. Voters should only be able to vote. Observers should only be able to see the voting scores. They should not be able to vote. To accomplish this, change the `permissions.acl` file to reflect these rules.
 
-Use the section [Update the business network](#update-the-business-network) to deploy the new features to the blockchain network. Don't forget to change the version number...
-Note: if you're stuck you can have a quick look 
+Use the section [Update the business network](#update-the-business-network) to deploy the new features to the blockchain network. Don't forget to change the version number.
+> Note: the 'finish' folder in this project contains a solution for all extra requirements. Please only look if you don't know how to code it yourself anymore. 
 
 ## Step 3: Generate the REST server
 Once you're satisfied with the voting business network, you can generate a REST server that creates RESTful endpoints to your business network. These endpoints can be consumed by the front-end application. To generate a REST server from a deployed business network, enter the following commmand:
