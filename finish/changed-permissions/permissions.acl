@@ -15,7 +15,6 @@
 /**
  * Sample access control list.
  */
-
 rule ObserversCanReadEverything {
     description: "Allow observers to have read access to all resources"
     participant: "composer.sol.acl.voting.observer"
@@ -29,6 +28,15 @@ rule VoterCanSubmitTransactions {
     participant: "composer.sol.acl.voting.voter"
     operation: CREATE
     resource: "composer.sol.acl.voting.vote"
+    action: ALLOW
+}
+
+rule VoterHasFullAccessToTheirAssets {
+    description: "Allow all participants full access to their assets"
+    participant(p): "composer.sol.acl.voting.voter"
+    operation: ALL
+    resource(r): "composer.sol.acl.voting.ifVoted"
+    condition: (r.getIdentifier() === p.getIdentifier())
     action: ALLOW
 }
 
