@@ -28,6 +28,7 @@ asset candidateVote identified by politicalParty {
   o String politicalParty
   o Integer totalVote
 }
+
 transaction vote {
   --> candidateVote candidateVoteAsset
   --> ifVoted ifVotedAsset
