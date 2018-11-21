@@ -164,7 +164,7 @@ Another option of course is to build your own front-end using whatever technolog
 
 4. Once the Node-RED environment is up-and-running, visit the app URL and complete the wizard. It basically asks you to secure your Node-RED editing environment with a userid and password. 
 5. You can now use the flows available in the URL below as inspiration to build your own dashboard.
-
+https://ibmdevday2018-nodered.eu-de.mybluemix.net/red
 
 **Have fun and happy coding!!!** :smiley: :smiley:
 
